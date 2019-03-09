@@ -6,7 +6,7 @@ import os
 import random
 import sys
 
-__VERSION__ = '0.1.0'
+__VERSION__ = '0.1.1'
 CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 
