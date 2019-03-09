@@ -19,6 +19,7 @@ setup(
     python_requires='>=3',
     url='https://github.com/shkey/change-the-md5',
     keywords='MD5',
+    py_modules=['ctmd5'],
     entry_points={
         'console_scripts': ['ctmd5=ctmd5:cli'],
     },
