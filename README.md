@@ -36,4 +36,4 @@ after: 447e1bb20de228dcdead50db56415b7c
 
 ## LICNESE
 
-MIT [@shkey](https://github.com/shkey)
+The MIT License [@shkey](https://github.com/shkey)
