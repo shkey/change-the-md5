@@ -34,6 +34,6 @@ The md5 value has been changed.
 after: 447e1bb20de228dcdead50db56415b7c
 ```
 
-## LICNESE
+## LICENSE
 
 The MIT License [@shkey](https://github.com/shkey)
