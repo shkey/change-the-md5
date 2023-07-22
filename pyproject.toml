@@ -1,0 +1,89 @@
+[project]
+    authors = [{ name = "shkey", email = "shkey325@gmail.com" }]
+    classifiers = [
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+    ]
+    dependencies = ["click>=6.7"]
+    description = "change the MD5"
+    dynamic = ["version"]
+    keywords = ["MD5"]
+    license = { text = "MIT" }
+    name = "ctmd5"
+    readme = "README.md"
+    requires-python = ">=3.8"
+
+    [project.urls]
+        Homepage = "https://github.com/shkey/change-the-md5"
+
+    [project.scripts]
+        ctmd5 = "ctmd5:cli"
+
+[tool.black]
+    exclude        = "build|buildoutput|dist|.git|.mypy_cache|.ruff_cache|.venv"
+    line-length    = 160
+    target-version = ["py38"]
+
+[tool.mypy]
+    python_version = 3.8
+
+    plugins = ["pydantic.mypy"]
+
+    exclude = ["buildoutput", "public", "tests"]
+
+    check_untyped_defs       = true
+    disallow_subclassing_any = false
+    disallow_untyped_defs    = true
+    implicit_reexport        = true
+    pretty                   = true
+    strict                   = true
+    warn_redundant_casts     = true
+    warn_unused_ignores      = true
+
+    [[tool.mypy.pydantic-mypy]]
+        init_forbid_extra             = true
+        init_typed                    = true
+        warn_required_dynamic_aliases = true
+        warn_untyped_fields           = true
+
+    [[tool.mypy.overrides]]
+        module = ["pytz", "uvicorn"]
+
+        ignore_missing_imports = true
+
+[tool.pdm]
+    [tool.pdm.dev-dependencies]
+        dev     = []
+        linting = ["black>=23.7.0", "mypy>=1.4.1", "ruff>=0.0.278"]
+
+    [tool.pdm.scripts]
+        linting = { shell = "black . && ruff check ." }
+
+    [tool.pdm.version]
+        path   = "src/_version.py"
+        source = "file"
+
+[tool.pydantic-mypy]
+    init_forbid_extra             = true
+    init_typed                    = true
+    warn_required_dynamic_aliases = true
+    warn_untyped_fields           = true
+
+[tool.ruff]
+    exclude       = ["tests"]
+    extend-select = ['C90', 'D', 'I', 'Q', 'RUF100', 'T20', 'UP']
+    # E501 is handled by black
+    ignore         = ['D105', 'D107', 'D203', 'D205', 'D213', 'D415', 'E501']
+    isort          = {}
+    line-length    = 160
+    mccabe         = { max-complexity = 14 }
+    pydocstyle     = { convention = "google" }
+    target-version = "py38"
+
+[build-system]
+    build-backend = "pdm.backend"
+    requires      = ["pdm-backend"]
