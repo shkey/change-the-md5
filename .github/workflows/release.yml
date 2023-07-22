@@ -1,0 +1,23 @@
+name: Release Python Package
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  release-pypi:
+    name: release-pypi
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pdm-project/setup-pdm@v3
+      - name: Publish package distributions to PyPI
+        run: pdm publish
